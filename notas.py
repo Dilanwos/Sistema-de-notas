@@ -4,12 +4,6 @@
 def calcular_promedio(notas):
     """
     Calcula el promedio de una lista de notas.
-
-    Args:
-        notas (list): Lista de notas numéricas.
-
-    Returns:
-        float: Promedio de las notas.
     """
     if not notas:
         return 0
@@ -19,13 +13,7 @@ def calcular_promedio(notas):
 
 def clasificar_nota(nota):
     """
-    Clasifica una nota según su rendimiento académico.
-
-    Args:
-        nota (float): Nota del estudiante.
-
-    Returns:
-        str: Clasificación de la nota.
+    Clasifica una nota según el rendimiento académico.
     """
     if nota >= 4.5:
         return "Excelente"
@@ -39,13 +27,25 @@ def clasificar_nota(nota):
 
 def esta_aprobado(nota, minima_aprobacion=3.0):
     """
-    Verifica si una nota cumple con la mínima aprobación.
-
-    Args:
-        nota (float): Nota del estudiante.
-        minima_aprobacion (float): Nota mínima para aprobar.
-
-    Returns:
-        bool: True si aprueba, False si reprueba.
+    Verifica si una nota aprueba.
     """
     return nota >= minima_aprobacion
+
+
+def reporte(notas):
+    """
+    Genera un reporte completo del estudiante.
+
+    Args:
+        notas (list): Lista de notas.
+
+    Returns:
+        dict: Información del promedio, clasificación y aprobación.
+    """
+    promedio = calcular_promedio(notas)
+
+    return {
+        "promedio": round(promedio, 2),
+        "clasificacion": clasificar_nota(promedio),
+        "aprobado": esta_aprobado(promedio),
+    }
